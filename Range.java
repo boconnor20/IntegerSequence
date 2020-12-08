@@ -44,3 +44,4 @@ public class Range implements IntegerSequence{
    return beforenext;
  }
 }
+}
