@@ -5,25 +5,42 @@ public class Range implements IntegerSequence{
   public Range(int start,  int end){
   try{
       if(start>end){
-        throw new IllegalArgumentException("Start value must be less than or equal to end");
+        throw new IllegalArgumentException("Start value must be less than or equal to the end value");
       }
       this.start=start;
       this.end=end;
       current = start;
     }
     catch(IllegalArgumentException e){
-      throw new IllegalArgumentException("Start value must be less than or equal to end");
+      throw new IllegalArgumentException("Start value must be less than or equal to the end value");
     }
   }
+   //start over from the start of the sequence
   public void reset(){
     current=start;
     }
+    //returns the total length of the sequence
   public int length(){
-    return end-start+1;
+    return end-start;
     }
-  public boolean hasNext(){  }
+    //does the sequence have more elements?
+  public boolean hasNext(){
+      return current<=end;
+    }
 
   //@throws NoSuchElementException
-  public int next(){    }
-
+  //return the current value in the sequence and advances to the next
+  public int next(){
+    int beforenext = current;
+    try{
+      if(current>end){
+        throw new NoSuchElementException("Current can't be greater than end");
+      }
+      current++;
+    }
+    catch(NoSuchElementException e){
+    throw new NoSuchElementException("Current can't be greater than end");
+    }
+   return beforenext;
+ }
 }
