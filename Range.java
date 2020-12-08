@@ -21,7 +21,7 @@ public class Range implements IntegerSequence{
     }
     //returns the total length of the sequence
   public int length(){
-    return end-start;
+    return end-start+1;
     }
     //does the sequence have more elements?
   public boolean hasNext(){
@@ -43,5 +43,5 @@ public class Range implements IntegerSequence{
     }
    return beforenext;
  }
-}
+
 }
