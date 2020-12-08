@@ -6,12 +6,17 @@ public class ArraySequence implements IntegerSequence{
   /*Construct the sequence by copying values from the other array into the data array*/
   //Constructors
   public ArraySequence(int [] other){
-    data = new int[other.length];
-    for (int i=0; i<other.length; i++){
-      data[i]=other[i];
+      data=other;
       currentIndex=0;
-    }
   }
+  public ArraySequence(IntegerSequence otherseq){
+    data = new int[otherseq.length()];
+    for (int i=0; i<otherseq.length();i++){
+      data[i]=otherseq.next();
+    }
+    currentIndex=0;
+    otherseq.reset();
+    }
   //Methods
   public boolean hasNext(){
     return currentIndex<data.length;
